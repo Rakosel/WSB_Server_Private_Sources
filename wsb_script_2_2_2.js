@@ -1,4 +1,4 @@
-// upd81a3 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
+// upd81a7 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
 //
 //
 //					https://javascriptcompressor.com/
@@ -62,6 +62,9 @@ let temp_arr = new Array();
 T_arr = [0,1,2,4,5,16,17,20];
 H_arr = [3,8,9,18,19,21];
 P_arr = [6,7,12,13];
+var j_T = 0.0;
+var j_H = 0.0;
+var j_P = 0.0;
 // reverse panelki dlya debug
 var sds, mds, sets;
 sds = $(".sideset");
@@ -280,16 +283,13 @@ function txjstmp(s, d) {
     var as1 = $(".pst1");
     var as0 = $(".pst0");
 	var j=0,ii=0;
-	var j_T = 0.0;
-	var j_H = 0.0;
-	var j_P = 0.0;
 	var tmpf = 0.0;
 	//var jT = 0;
 	//var jH = 0;
 	//var jP = 0;
-	var T_cnt = 0
-	var H_cnt = 0
-	var P_cnt = 0
+	var T_cnt = 1
+	var H_cnt = 1
+	var P_cnt = 1
 //    console.log(d);
     if (s != 200) {
         as0.removeClass("badge-success");
@@ -730,7 +730,7 @@ function txjstmp(s, d) {
 					else
 					{j=j*j}
 					j_T+=Math.abs(tmpf);T_cnt++; 
-					//console.log("a5 "+parseFloat(temp_arr[T_arr[i]])+" "+T_arr[i]+" "+temp_arr[i]+" "+T_arr+" "+T_cnt);
+					console.log("a5 "+" "+ii+" "+parseFloat(temp_json.temp[T_arr[ii]])+" "+T_arr[ii]+" "+temp_arr[ii]+" "+T_arr+" "+T_cnt);
 				}
 				if(ii<H_arr.length && parseFloat(temp_json.temp[H_arr[ii]]) != NaN)
 				{
@@ -747,6 +747,7 @@ function txjstmp(s, d) {
             $("#" + maOBJ[i].name).val(temp_json.temp[i - 3]);
 			//temp_arr[i-3]=parseFloat(temp_json.temp[i - 3]);
         }
+		console.log("T_cnt "+" "+T_cnt);
 			j_T=(j_T*j)/T_cnt; j_H=j_H/H_cnt; j_P=j_P/P_cnt;	
 		}
 		//console.log(T_arr,H_arr,P_arr,temp_arr);
@@ -791,10 +792,6 @@ function txjstmp(s, d) {
 		{	tmpvloff(2);}
 		else
 		{ 	tmpvlon(2);}
-		
-		 $("#temperature").val(j_T.toString().substring(0, 6));
-		 $("#humudity").val(j_H.toString().substring(0, 6));
-		 $("#pressure").val(j_P.toString().substring(0, 6));
 		 
     $("#tm_adc").removeClass("is-invalid").html();
     $("#tm_adc").removeClass("is-valid").html();
@@ -1214,6 +1211,9 @@ function btn_lm75_2() {
 function sub_grad() {
     maOBJ = $("#tmpo").serializeArray();
     fetch("/temp_out.json?n=" + Math.random(), "GET", txjstmp, 10);
+		 $("#temperature").val(j_T.toString().substring(0, 6));
+		 $("#humudity").val(j_H.toString().substring(0, 6));
+		 $("#pressure").val(j_P.toString().substring(0, 6));
     //console.log(maOBJ);
 }
 
