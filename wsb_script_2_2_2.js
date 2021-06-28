@@ -716,7 +716,7 @@ function txjstmp(s, d) {
 	j=1;ii=0;
     if (temp_json["temp"]) {
 		j_T = 0.0; j_H = 0.0; j_P = 0.0;
-		T_cnt = 2; H_cnt = 2; P_cnt = 2;
+		T_cnt = 0; H_cnt = 0; P_cnt = 0;
         for (i = 3; i <= maOBJ.length && (i - 3) <= temp_json.temp.length; i++) {
             //try {
             if (temp_json.temp[i - 3] == "#ERR" || temp_json.temp[i - 3] == "" || temp_json.temp[i - 3] == NaN) {
