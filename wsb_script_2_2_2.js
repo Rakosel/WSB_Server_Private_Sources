@@ -1,4 +1,4 @@
-// upd81a STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
+// upd81a1 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
 //
 //	https://www.uglifyjs.net/
 //
@@ -279,10 +279,10 @@ function txjstmp(s, d) {
     var as1 = $(".pst1");
     var as0 = $(".pst0");
 	var j=0;
-		
 	var j_T = 0.0;
 	var j_H = 0.0;
 	var j_P = 0.0;
+	var tmpf = 0.0;
 	//var jT = 0;
 	//var jH = 0;
 	//var jP = 0;
@@ -712,7 +712,7 @@ function txjstmp(s, d) {
         }
         //bm1s_m
     }
-	
+	j=1;
     if (temp_json["temp"]) {
         for (i = 3; i <= maOBJ.length && (i - 3) <= temp_json.temp.length; i++) {
             //try {
@@ -730,11 +730,16 @@ function txjstmp(s, d) {
 			
         }
 		//console.log(T_arr,H_arr,P_arr,temp_arr);
-        for (i = 0; i < temp_arr.length; i++) {
+        for (i = 0; i < temp_arr.length && i < T_arr.length; i++) {
             //try {
 				if(i<T_arr.length && parseFloat(temp_arr[T_arr[i]]) != NaN)
 				{
-					j_T+=Math.abs(parseFloat(temp_arr[T_arr[i]]));T_cnt++; 
+					tmpf = parseFloat(temp_arr[T_arr[i]]);
+					if(tmpf<0)
+					{j=-1;}
+					else
+					{j=j*j}
+					j_T+=Math.abs(tmpf);T_cnt++; 
 					//console.log("a5 "+parseFloat(temp_arr[T_arr[i]])+" "+T_arr[i]+" "+temp_arr[i]+" "+T_arr+" "+T_cnt);
 				}
 				if(i<H_arr.length && parseFloat(temp_arr[H_arr[i]]) != NaN)
@@ -747,7 +752,7 @@ function txjstmp(s, d) {
 				}	
         }
 		//console.log(+"a5 "+j_T+" "+j_H+" "+j_P+" "+T_cnt+" "+H_cnt+" "+P_cnt);
-		j_T=j_T/T_cnt; j_H=j_H/H_cnt; j_P=j_P/P_cnt;
+		j_T=(j_T*j)/T_cnt; j_H=j_H/H_cnt; j_P=j_P/P_cnt;
 		tmpvloff(0);
 		tmpvloff(1);
 		tmpvloff(2);
