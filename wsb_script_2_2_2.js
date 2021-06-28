@@ -1,4 +1,4 @@
-// upd81a7 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
+// upd81a8 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
 //
 //
 //					https://javascriptcompressor.com/
@@ -730,7 +730,7 @@ function txjstmp(s, d) {
 					else
 					{j=j*j}
 					j_T+=Math.abs(tmpf);T_cnt++; 
-					console.log("a5 "+" "+ii+" "+parseFloat(temp_json.temp[T_arr[ii]])+" "+T_arr[ii]+" "+temp_arr[ii]+" "+T_arr+" "+T_cnt);
+					//console.log("a5 "+" "+ii+" "+parseFloat(temp_json.temp[T_arr[ii]])+" "+T_arr[ii]+" "+temp_arr[ii]+" "+T_arr+" "+T_cnt);
 				}
 				if(ii<H_arr.length && parseFloat(temp_json.temp[H_arr[ii]]) != NaN)
 				{
@@ -747,7 +747,7 @@ function txjstmp(s, d) {
             $("#" + maOBJ[i].name).val(temp_json.temp[i - 3]);
 			//temp_arr[i-3]=parseFloat(temp_json.temp[i - 3]);
         }
-		console.log("T_cnt "+" "+T_cnt);
+		//console.log("T_cnt "+" "+T_cnt);
 			j_T=(j_T*j)/T_cnt; j_H=j_H/H_cnt; j_P=j_P/P_cnt;	
 		}
 		//console.log(T_arr,H_arr,P_arr,temp_arr);
