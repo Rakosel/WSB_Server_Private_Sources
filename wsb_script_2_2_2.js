@@ -1,4 +1,4 @@
-// upd81a8 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
+// upd81a9 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
 //
 //
 //					https://javascriptcompressor.com/
@@ -715,6 +715,8 @@ function txjstmp(s, d) {
     }
 	j=1;ii=0;
     if (temp_json["temp"]) {
+		j_T = 0.0; j_H = 0.0; j_P = 0;
+		T_cnt = 1; H_cnt = 1; P_cnt = 1;
         for (i = 3; i <= maOBJ.length && (i - 3) <= temp_json.temp.length; i++) {
             //try {
             if (temp_json.temp[i - 3] == "#ERR" || temp_json.temp[i - 3] == "" || temp_json.temp[i - 3] == NaN) {
@@ -748,7 +750,7 @@ function txjstmp(s, d) {
 			//temp_arr[i-3]=parseFloat(temp_json.temp[i - 3]);
         }
 		//console.log("T_cnt "+" "+T_cnt);
-			j_T=(j_T*j)/T_cnt; j_H=j_H/H_cnt; j_P=j_P/P_cnt;	
+			j_T=(j_T*j)/T_cnt; j_H=j_H/H_cnt; j_P=j_P/P_cnt;
 		}
 		//console.log(T_arr,H_arr,P_arr,temp_arr);
        /* for (i = 0; i < temp_arr.length && i < T_arr.length; i++) {
