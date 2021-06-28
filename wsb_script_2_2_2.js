@@ -1,6 +1,7 @@
-// upd81a1 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
+// upd81a3 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
 //
-//	https://www.uglifyjs.net/
+//
+//					https://javascriptcompressor.com/
 //
 //
 // 682 stroka trim ???
@@ -278,7 +279,7 @@ function btn_bm280_2_Rd() {
 function txjstmp(s, d) {
     var as1 = $(".pst1");
     var as0 = $(".pst0");
-	var j=0;
+	var j=0,ii=0;
 	var j_T = 0.0;
 	var j_H = 0.0;
 	var j_P = 0.0;
@@ -712,7 +713,7 @@ function txjstmp(s, d) {
         }
         //bm1s_m
     }
-	j=1;
+	j=1;ii=0;
     if (temp_json["temp"]) {
         for (i = 3; i <= maOBJ.length && (i - 3) <= temp_json.temp.length; i++) {
             //try {
@@ -721,16 +722,35 @@ function txjstmp(s, d) {
             } else {
                 tmpvlon(i);
             }
+				if(ii<T_arr.length && parseFloat(temp_json.temp[T_arr[ii]]) != NaN)
+				{
+					tmpf = parseFloat(temp_json.temp[T_arr[ii]]);
+					if(tmpf<0)
+					{j=-1;}
+					else
+					{j=j*j}
+					j_T+=Math.abs(tmpf);T_cnt++; 
+					//console.log("a5 "+parseFloat(temp_arr[T_arr[i]])+" "+T_arr[i]+" "+temp_arr[i]+" "+T_arr+" "+T_cnt);
+				}
+				if(ii<H_arr.length && parseFloat(temp_json.temp[H_arr[ii]]) != NaN)
+				{
+					j_H+=parseFloat(temp_json.temp[H_arr[ii]]);H_cnt++;
+				}
+				if(ii<P_arr.length && parseFloat(temp_json.temp[P_arr[ii]]) != NaN)
+				{
+					j_P+=parseFloat(temp_json.temp[P_arr[ii]]);P_cnt++;
+				}	
+			ii++;
 	     // str_out = temp_json.temp[i - 3];
 	     //var newString = str.trim()
             //$("#" + maOBJ[i].name).val(temp_json.temp[i - 3]);
             $("#" + maOBJ[i].name).val(temp_json.temp[i - 3]);
-			//temp_arr[i-3]=$("#" + maOBJ[i].name).val();
-			temp_arr[i-3]=parseFloat(temp_json.temp[i - 3]);
-			
+			//temp_arr[i-3]=parseFloat(temp_json.temp[i - 3]);
         }
+			j_T=(j_T*j)/T_cnt; j_H=j_H/H_cnt; j_P=j_P/P_cnt;	
+		}
 		//console.log(T_arr,H_arr,P_arr,temp_arr);
-        for (i = 0; i < temp_arr.length && i < T_arr.length; i++) {
+       /* for (i = 0; i < temp_arr.length && i < T_arr.length; i++) {
             //try {
 				if(i<T_arr.length && parseFloat(temp_arr[T_arr[i]]) != NaN)
 				{
@@ -751,8 +771,11 @@ function txjstmp(s, d) {
 					j_P+=parseFloat(temp_arr[P_arr[i]]);P_cnt++;
 				}	
         }
+
+    }*/
+	
 		//console.log(+"a5 "+j_T+" "+j_H+" "+j_P+" "+T_cnt+" "+H_cnt+" "+P_cnt);
-		j_T=(j_T*j)/T_cnt; j_H=j_H/H_cnt; j_P=j_P/P_cnt;
+		
 		tmpvloff(0);
 		tmpvloff(1);
 		tmpvloff(2);
@@ -772,8 +795,7 @@ function txjstmp(s, d) {
 		 $("#temperature").val(j_T.toString().substring(0, 6));
 		 $("#humudity").val(j_H.toString().substring(0, 6));
 		 $("#pressure").val(j_P.toString().substring(0, 6));
-		
-    }
+		 
     $("#tm_adc").removeClass("is-invalid").html();
     $("#tm_adc").removeClass("is-valid").html();
     if (temp_json["temt_adc"]) {
