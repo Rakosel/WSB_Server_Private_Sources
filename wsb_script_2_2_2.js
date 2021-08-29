@@ -1,10 +1,10 @@
-// upd81a9 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
+// upd82a1 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
 //
 //
 //					https://javascriptcompressor.com/
 //
-//
-// 682 stroka trim ???
+// 29.08.21
+// 747,751 stroka trim ???
 // except (
 // http://qaru.site/questions/66646/how-to-recognize-touch-events-using-jquery-in-safari-for-ipad-is-it-possible
 // function time(){
@@ -719,11 +719,11 @@ function txjstmp(s, d) {
 		T_cnt = 0; H_cnt = 0; P_cnt = 0;
         for (i = 3; i <= maOBJ.length && (i - 3) <= temp_json.temp.length; i++) {
             //try {
-            if (temp_json.temp[i - 3] == "#ERR" || temp_json.temp[i - 3] == "" || temp_json.temp[i - 3] == NaN) {
+            if (temp_json.temp[i - 3] == "#ERR" || temp_json.temp[i - 3] == "" || parseFloat(temp_json.temp[i - 3]) == NaN) {
                 tmpvloff(i);
             } else {
                 tmpvlon(i);
-            }
+            
 				if(ii<T_arr.length && parseFloat(temp_json.temp[T_arr[ii]]) != NaN)
 				{
 					tmpf = parseFloat(temp_json.temp[T_arr[ii]]);
@@ -736,13 +736,19 @@ function txjstmp(s, d) {
 				}
 				if(ii<H_arr.length && parseFloat(temp_json.temp[H_arr[ii]]) != NaN)
 				{
-					j_H+=parseFloat(temp_json.temp[H_arr[ii]]);H_cnt++;
+					//tmpf = parseFloat(temp_json.temp[H_arr[ii]]);
+					if(parseFloat(temp_json.temp[H_arr[ii]])>=99.0)
+					{}
+					else if(H_arr[ii] == 3)
+					{j_H+=(parseFloat(temp_json.temp[H_arr[ii]])-9.5);H_cnt++;}
+					else 
+					{j_H+=parseFloat(temp_json.temp[H_arr[ii]]);H_cnt++;}
 				}
 				if(ii<P_arr.length && parseFloat(temp_json.temp[P_arr[ii]]) != NaN)
 				{
 					j_P+=parseFloat(temp_json.temp[P_arr[ii]]);P_cnt++;
 				}	
-			ii++;
+			ii++;}
 	     // str_out = temp_json.temp[i - 3];
 	     //var newString = str.trim()
             //$("#" + maOBJ[i].name).val(temp_json.temp[i - 3]);
@@ -778,10 +784,7 @@ function txjstmp(s, d) {
     }*/
 	
 		//console.log(+"a5 "+j_T+" "+j_H+" "+j_P+" "+T_cnt+" "+H_cnt+" "+P_cnt);
-		
-		tmpvloff(0);
-		tmpvloff(1);
-		tmpvloff(2);
+
 		if(j_T==NaN)
 		{	tmpvloff(0);}
 		else
