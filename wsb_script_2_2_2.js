@@ -1,4 +1,4 @@
-// upd82a2 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
+// upd82a3 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
 //
 //
 //					https://javascriptcompressor.com/
@@ -724,7 +724,7 @@ function txjstmp(s, d) {
             } else {
                 tmpvlon(i);
             
-				if(ii<T_arr.length && parseFloat(temp_json.temp[T_arr[ii]]) != NaN)
+				if(ii<T_arr.length && parseFloat(temp_json.temp[T_arr[ii]]) != NaN && temp_json.temp[T_arr[ii]] != "#ERR")
 				{
 					tmpf = parseFloat(temp_json.temp[T_arr[ii]]);
 					if(tmpf<0)
@@ -734,17 +734,17 @@ function txjstmp(s, d) {
 					j_T+=Math.abs(tmpf);T_cnt++; 
 					//console.log("a5 "+" "+ii+" "+parseFloat(temp_json.temp[T_arr[ii]])+" "+T_arr[ii]+" "+temp_arr[ii]+" "+T_arr+" "+T_cnt);
 				}
-				if(ii<H_arr.length && parseFloat(temp_json.temp[H_arr[ii]]) != NaN)
+				if(ii<H_arr.length && parseFloat(temp_json.temp[H_arr[ii]]) != NaN && temp_json.temp[H_arr[ii]] != "#ERR")
 				{
 					//tmpf = parseFloat(temp_json.temp[H_arr[ii]]);
 					if(parseFloat(temp_json.temp[H_arr[ii]])>=99.0)
-					{}
+					{H_cnt++;}
 					else if(H_arr[ii] == 3)
 					{j_H+=(parseFloat(temp_json.temp[H_arr[ii]])-9.5);H_cnt++;}
 					else 
 					{j_H+=parseFloat(temp_json.temp[H_arr[ii]]);H_cnt++;}
 				}
-				if(ii<P_arr.length && parseFloat(temp_json.temp[P_arr[ii]]) != NaN)
+				if(ii<P_arr.length && parseFloat(temp_json.temp[P_arr[ii]]) != NaN && temp_json.temp[P_arr[ii]] != "#ERR")
 				{
 					j_P+=parseFloat(temp_json.temp[P_arr[ii]]);P_cnt++;
 				}	
