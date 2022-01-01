@@ -1,4 +1,4 @@
-// upd82a7 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
+// upd82a8 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
 //
 //
 //					https://javascriptcompressor.com/
@@ -1144,10 +1144,10 @@ function btn_lm75_1() {
             tos1++;
         }
     }
-    sc_1l.val(tos1);
-    so_1l.val(thyst1);
-    $(".lm75thy_1").text(sc_1l.val() + " C°");
-    $(".lm75tos_1").text(so_1l.val() + " C°");
+    sc_1l.val(thyst1);
+    so_1l.val(tos1);
+    $(".lm75thy_1").text(sc_1l.val() + " °C");
+    $(".lm75tos_1").text(so_1l.val() + " °C");
     thyst1 = parseInt(sc_1l.val());
     tos1 = parseInt(so_1l.val());
 
