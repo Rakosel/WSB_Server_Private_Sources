@@ -1,4 +1,4 @@
-// upd82a9 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
+// upd82a10 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
 //
 //
 //					https://javascriptcompressor.com/
@@ -1137,7 +1137,7 @@ function btn_lm75_1() {
         tos1 = i;
        // console.log("thyst1>tos1" + tos1 + " " + thyst1);
     }
-    if (thyst1 > tos1 && tos1 > 0) {
+    else if (thyst1 > tos1 && tos1 > 0) {
         i = tos1;
         thyst1 = tos1;
         tos1 = i;
