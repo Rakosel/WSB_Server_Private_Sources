@@ -1,9 +1,11 @@
-// upd82a3 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
+// upd82a5 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
 //
 //
 //					https://javascriptcompressor.com/
 //
-// 29.08.21
+// 02.01.22
+//	+ Ispravil "H"
+//	1127 line pravka lm75
 // 747,751 stroka trim ???
 // except (
 // http://qaru.site/questions/66646/how-to-recognize-touch-events-using-jquery-in-safari-for-ipad-is-it-possible
@@ -736,9 +738,9 @@ function txjstmp(s, d) {
 				}
 				if(ii<H_arr.length && parseFloat(temp_json.temp[H_arr[ii]]) != NaN && temp_json.temp[H_arr[ii]] != "#ERR")
 				{
-					//tmpf = parseFloat(temp_json.temp[H_arr[ii]]);
-					if(parseFloat(temp_json.temp[H_arr[ii]])>=99.0)
-					{H_cnt++;}
+					tmpf = parseFloat(temp_json.temp[H_arr[ii]]);
+					if(tmpf>=99.0)
+					{}
 					else if(H_arr[ii] == 3)
 					{j_H+=(parseFloat(temp_json.temp[H_arr[ii]])-9.5);H_cnt++;}
 					else 
@@ -1126,7 +1128,7 @@ function btn_lm75_1() {
     if (thyst1 > tos1 && thyst1 < 0 && tos1 < 0) {
         i = tos1;
         thyst1 = tos1;
-        tos1 = thyst1;
+        tos1 = i;
         //console.log("thyst1>tos1 && (thyst1<0) && (tos1<0)" + tos1 + " " + thyst1);
     } else if (thyst1 > tos1) {
         i = thyst1;
@@ -1141,8 +1143,8 @@ function btn_lm75_1() {
             tos1++;
         }
     }
-    sc_1l.val(thyst1);
-    so_1l.val(tos1);
+    sc_1l.val(tos1);
+    so_1l.val(thyst1);
     $(".lm75thy_1").text(sc_1l.val() + " C°");
     $(".lm75tos_1").text(so_1l.val() + " C°");
     thyst1 = parseInt(sc_1l.val());
