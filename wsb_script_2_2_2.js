@@ -1,4 +1,4 @@
-// upd82a10 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
+// upd82a11 STABLE trim with upravl timer	https://rakosel.github.io/wsb_script_2_2_1.js
 //
 //
 //					https://javascriptcompressor.com/
@@ -284,7 +284,8 @@ function btn_bm280_2_Rd() {
 function txjstmp(s, d) {
     var as1 = $(".pst1");
     var as0 = $(".pst0");
-	var j=0,ii=0;
+	var j=0;
+	var ii=0;
 	var tmpf = 0.0;
 	//var jT = 0;
 	//var jH = 0;
