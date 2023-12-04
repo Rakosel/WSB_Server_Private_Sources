@@ -1,18 +1,27 @@
 <!doctype html>
 <html lang="en"><head>
   		<meta charset="utf-8">
+	
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
    		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-		<script src="https://unpkg.com/current-device/umd/current-device.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-touch-events/2.0.0/jquery.mobile-events.min.js"></script>
-   		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script><link rel="stylesheet" href="https://atuin.ru/demo/ui-slider/jquery-ui.css">
+		<link rel="stylesheet" href="https://atuin.ru/demo/ui-slider/jquery-ui.css">
 		<link rel="stylesheet" href="https://rakosel.github.io/WSB_side_loaded_css.css">
 		<link rel="stylesheet" href="https://rawgit.com/Mikhus/canvas-gauges/master/fonts/fonts.css">
 		<!--<script async src="https://rawgit.com/Mikhus/canvas-gauges/master/gauge.min.js">https://raw.githubusercontent.com/Mictronics/GaugeMeter/master/</script>-->
+		<script type='text/javascript' src="https://raw.githubusercontent.com/Mictronics/GaugeMeter/master/GaugeMeter.js"></script>
+        <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js'></script>
+		<script src="https://unpkg.com/current-device/umd/current-device.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-touch-events/2.0.0/jquery.mobile-events.min.js"></script>
+    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>	
+	
         <script type='text/javascript' src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+        <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js'></script>
+        <script type='text/javascript' src="GaugeMeter.js"></script>
         <script type='text/javascript' src="https://raw.githubusercontent.com/Rakosel/WSB_Server_Private_Sources/mainESP32/GaugeMeter.js"></script>
+	
+	
+	
 		<style>
 
   .GaugeMeter{
@@ -157,17 +166,14 @@
 				 <div class="col-xs-6 col-md-6 col-lg-3 offset-lg-1 offset-xl-0 col-xl-5"><input type="text" class="form-control" id = "rtc_get" name="rtc_get" value="" required></div>
 	  			</div>-->
 		<!--upd4 option 			https://rakosel.github.io/WSB_page_slave.html collapse hide-->				
-		
-	
+								<div class="GaugeMeter" id="PreviewGaugeMeter" data-bind="gaugeValue: Percent" data-append=" С°" data-size=100 data-theme="White" data-width=15 data-style="Arch" data-animationstep="0"></div>	
 
 					
 				<div class="macnt text-white row-*-* mx-auto" style="background-color:#575757">
-		
-	
+
 				</div>
 				<div class="setcnt text-white row-*-* shadow border mb-5 mx-auto collapse hide" style="background-color:#575757">
 
-					
 					
 				</div>	
 		   		<div class="container-fluid shadow border">
@@ -175,7 +181,6 @@
 				<hr>
 				<form id = "esp_uart_form" class="mb-" novalidate>
 				<p>Input</p>
-
 				<div class="form-group col">
 				<button type="button" id="btn0" class="btn btn-primary" onclick="erxclr_uart()">Очистить Input</button>
 				</div>
@@ -199,8 +204,8 @@
 	<div class="row">
 	<div class="card border-light mb-3 col-md-9 offset-md-2 border shadow " >
 		<div class="card-header text-center">Version & about</div>
-
-
+					
+				<div class="GaugeMeter" id="GaugeMeter_1" data-percent="10"></div>
 		
                 <div><input id="slider1" type="range" min="0" max="100" step="5" value="15" data-bind="value: Percent" /></div>
 <p class="card-text">WSB_Server<strong>&reg;</strong> 2.3.2 a02 build Official version by <strong>Farid_WSB&copy;Rakosel&trade;</strong> beta version from 30.09.2018-09.03.2019 based by Lua 5.1.4 on SDK 2.2.1 with NodeMCU 2.2.1 &copy; 2018 - 2019</p>
@@ -213,7 +218,8 @@
 		
 	  </div>
 	  </div>
-
+	
+	<div class="GaugeMeter" id="PreviewGaugeMeter" data-bind="gaugeValue: Percent" data-append=" С°" data-size=100 data-theme="White" data-width=15 data-style="Arch" data-animationstep="0"></div>
 	<!-- Optional JavaScript window.screen.availWidth>=576 || window.screen.width>=576 || window.innerWidth>=576-->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	  	  </body>
