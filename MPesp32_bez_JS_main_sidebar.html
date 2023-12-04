@@ -11,8 +11,8 @@
 		<link rel="stylesheet" href="https://rawgit.com/Mikhus/canvas-gauges/master/fonts/fonts.css">
 		<!--<script async src="https://rawgit.com/Mikhus/canvas-gauges/master/gauge.min.js">https://raw.githubusercontent.com/Mictronics/GaugeMeter/master/</script>-->
         <script type='text/javascript' src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js'></script>
-        <script type='text/javascript' src="GaugeMeter.js"></script>
+        <script type='text/javascript' src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+        <script type='text/javascript' src="https://raw.githubusercontent.com/Rakosel/WSB_Server_Private_Sources/mainESP32/GaugeMeter.js"></script>
 		<style>
 
   .GaugeMeter{
@@ -221,8 +221,8 @@
 
 	<script type="text/javascript">
 		$(document).ready(function () {
-			$('.macnt').load('https://rakosel.github.io/WSB_page_main.html').html();
-			$('.setcnt').load('https://rakosel.github.io/WSB_page_slave.html').html();
+			$('.macnt').load('https://raw.githubusercontent.com/Rakosel/WSB_Server_Private_Sources/mainESP32/WSB_page_main.html').html();
+			$('.setcnt').load('https://raw.githubusercontent.com/Rakosel/WSB_Server_Private_Sources/mainESP32/WSB_page_slave.html').html();
                 // Initialize GaugeMeter plugin
                 $(".GaugeMeter").gaugeMeter();
 				$('#GaugeMeter_1').gaugeMeter({ percent: 15 });
