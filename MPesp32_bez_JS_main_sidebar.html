@@ -149,7 +149,38 @@
   	  <!-- Navbar content style="background-color: #e3f2fd;"-->
 	</nav>
 		<!--<div class="cntm container-fluid">-->
-		<div class="macnt text-white row-*-* shadow border mb-5 mx-auto collapse hide" style="background-color:#575757"></div>	
+
+					
+				<div class="macnt text-white row-*-* mx-auto" style="background-color:#575757">
+				<div class="GaugeMeter" id="PreviewGaugeMeter" data-bind="gaugeValue: Percent" data-append=" С°" data-size=100 data-theme="White" data-width=15 data-style="Arch" data-animationstep="0"></div>
+	
+				</div>
+				<div class="setcnt text-white row-*-* shadow border mb-5 mx-auto collapse hide" style="background-color:#575757">
+				</div>	
+		   		<div class="container-fluid shadow border">
+				<p class="h5 modal-title text-center" id="esp_uart">Обмен по WEB-UART</p>
+				<hr>
+
+				<p>Input</p>
+				<div class="form-group col">
+				<button type="button" id="btn0" class="btn btn-primary" onclick="erxclr_uart()">Очистить Input</button>
+				</div>
+				<textarea id="esp_tx" rows="10" cols="80" class="form-control">
+				</textarea>
+				<br>
+				<div class="form-group col">
+				<button type="button" id="btn1" class="btn btn-primary" onclick="submit_uart()">SEND UART(D8)</button>	
+				<span>Передавать команды без LUA </span>
+				<input type="checkbox" name="uart_get_ch" id="uart_get_ch">
+				</div>
+				<div class="form-group col">
+				<button type="button" id="btn2" class="btn btn-primary" onclick="etxclr_uart()">Очистить OUTPUT</button>
+				</div>		  
+				<p>Output</p>
+				<textarea id="esp_urx" rows="10" cols="80" class="form-control">
+				</textarea><br>			
+
+
       <!-- Main jumbotron for a primary marketing message or call to action 
 	  			<div class="text-black row-*-* mx-auto">
 				 <div class="col-xs-6 col-md-6 col-lg-3 offset-lg-1 offset-xl-0 col-xl-5"><input type="text" class="form-control" id = "rtc_get" name="rtc_get" value="" required></div>
