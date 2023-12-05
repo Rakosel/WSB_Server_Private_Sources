@@ -148,12 +148,8 @@
 	  	</div>
   	  <!-- Navbar content style="background-color: #e3f2fd;"-->
 	</nav>
-		<!--<div class="cntm container-fluid">-->
-
-					
+		<!--<div class="cntm container-fluid">-->	
 				<div class="macnt text-white row-*-* mx-auto" style="background-color:#575757">
-				<div class="GaugeMeter" id="PreviewGaugeMeter" data-bind="gaugeValue: Percent" data-append=" С°" data-size=100 data-theme="White" data-width=15 data-style="Arch" data-animationstep="0"></div>
-	
 				</div>
 				<div class="setcnt text-white row-*-* shadow border mb-5 mx-auto collapse hide" style="background-color:#575757">
 				</div>	
@@ -210,16 +206,14 @@
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
 	  	  </body>
  </html>
-
 	<script type="text/javascript">
 		$(document).ready(function () {
-			
-			$('.macnt').load('https://raw.githubusercontent.com/Rakosel/WSB_Server_Private_Sources/mainESP32/WSB_page_main.html').html();
+				$('.macnt').load('https://raw.githubusercontent.com/Rakosel/WSB_Server_Private_Sources/mainESP32/WSB_page_main.html').html();
+			//$('.macnt').load('https://raw.githubusercontent.com/Rakosel/WSB_Server_Private_Sources/mainESP32/WSB_page_main.html').html();
 			//$('.setcnt').load('https://raw.githubusercontent.com/Rakosel/WSB_Server_Private_Sources/mainESP32/WSB_page_slave.html').html();
                 // Initialize GaugeMeter plugin
-                $(".GaugeMeter").gaugeMeter();
+			    $(".GaugeMeter").gaugeMeter();
 				$('#GaugeMeter_1').gaugeMeter({ percent: 15 });
-
             });
 			/*$('.setcnt').load('https://rakosel.github.io/WSB_page_slave.html', function()
 			{
