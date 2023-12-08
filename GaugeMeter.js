@@ -308,6 +308,21 @@
           'percent',
           'used',
           'min',
+		  'max',
+		  'majorTicks',
+		  'minorTicks',
+			strokeTicks
+			highlights
+			colorPlate
+			colorMajorTicks
+			colorMinorTicks
+			colorTitle
+			colorUnits
+			colorNumbers
+			valueBox
+			colorValueText
+			colorValueBoxRect
+			colorValueBoxRectEnd
           'total',
           'size',
           'prepend',
