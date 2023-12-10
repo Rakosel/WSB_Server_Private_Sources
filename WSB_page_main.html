@@ -3,9 +3,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 		<script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
-        <script type="text/javascript" src="GaugeMeter.js"></script>
+        <script type="text/javascript" src="https://github.com/Rakosel/WSB_Server_Private_Sources/blob/mainESP32/GaugeMeter.js"></script>
 		<link rel="stylesheet" href="https://raw.githubusercontent.com/Mikhus/canvas-gauges/master/fonts/fonts.css">
-    	<script type="text/javascript" src="https://rakosel.github.io/gauge.min.js"></script>
+    	<script type="text/javascript" src="https://rakosel.github.io/GaugeMeter.js"></script>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://atuin.ru/demo/ui-slider/jquery-ui.css">
 		<link rel="stylesheet" href="WSB_side_loaded_css.css">
@@ -39,19 +39,21 @@
     Width:           80%;
   }
 
-  .GaugeMeter S,
-  .GaugeMeter U{
-    Text-Decoration: None;
-    Font-Size:       .5em;
-    Opacity:         .5;
-  }
-
   .GaugeMeter B{
     Color:           Black;
     Font-Weight:     300;
     Font-Size:       .5em;
     Opacity:         .8;
   }
+			
+	
+  .GaugeMeter S,
+  .GaugeMeter U{
+    Text-Decoration: None;
+    Font-Size:       .5em;
+    Opacity:         .5;
+  }		
+			
   </style>
 
 <br>
@@ -73,11 +75,15 @@
 					</div>
 					<div class="col">
 					<p class="h5 modal-title text-left" id="srednie">Влажность</p>
-					<div class="GaugeMeter" id="GauAvHum" data-bind="gaugeValue: Percent" data-append=" С°" data-size=100 data-width=15 data-style="Arch" data-animationstep="0"></div>
+					<div class="GaugeMeter" id="GauAvHum" data-append=" %" data-size=100 data-width=15 data-style="Arch" data-animationstep="0"></div>
 					</div>
 					<div class="col">
 					<p class="h5 modal-title text-left" id="srednie">Давление</p>
-					<div class="GaugeMeter" id="GauAvPress" data-percent="10" data-bind="gaugeValue: Percent" data-append=" С°" data-size=100 data-width=15 data-style="Arch" data-animationstep="0"></div>
+					<div class="GaugeMeter" id="GauAvPress" data-append=" mmHg" data-size=100 data-width=15 data-style="Arch" data-animationstep="0"></div>
+					</div>
+					<div class="col">
+					<p class="h5 modal-title text-left" id="srednie">Качество Возд</p>
+					<div class="GaugeMeter" id="AirQ" data-size=100 data-width=15 data-style="Arch" data-animationstep="0"></div>
 					</div>
 					</div>
 	
@@ -207,8 +213,9 @@
 				<script type="text/javascript">
 				$(document).ready(function () {
 					$(".GaugeMeter").gaugeMeter();
-					$('#GauAvHum').gaugeMeter({ percent: 16 });
-
+					$('#GauAvHum').gaugeMeter({ percent: 16, theme: 'Green-Gold-Red' });
+					$('#GauAvPress').gaugeMeter({ percent: 16, theme: 'Green-Gold-Red', size: '0.01', text: 'n' });
+					
 					
 					
 	var gaugePS = new RadialGauge({
